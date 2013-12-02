@@ -1,0 +1,58 @@
+# Font settings
+use_xft yes
+xftfont Monospace:size=8
+override_utf8_locale yes
+# Update settings
+update_interval 5.0
+total_run_times 0
+# Window settings
+own_window yes
+own_window_argb_visual yes
+own_window_argb_value 128
+own_window_colour 000000
+own_window_type panel
+own_window_class conky-stesim
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+alignment top_middle
+gap_x 0
+gap_y 0
+border_inner_margin 4
+# Text buffer settings
+max_text_width 0
+minimum_size 1920 40
+maximum_width 1920
+# Misc settings
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_bar_size 50 5
+default_graph_size 75 16
+no_buffers yes
+uppercase no
+pad_percents 2
+short_units yes
+default_color FFFFFF
+color1 1793D1
+
+# System information
+template1 ${goto \1}Kernel: ${kernel}${goto \1}${voffset 14}Loc IP: ${addr}${goto \1}${voffset 14}Uptime: ${uptime}${voffset -28}
+# CPU Usage
+template2 ${goto \1}${freq_g 1} ${cpubar cpu1}${offset 10}${cpubar cpu2} ${freq_g 2}${goto \1}${voffset 9}${freq_g 3} ${cpubar cpu3}${offset 10}${cpubar cpu4} ${freq_g 4}${goto \1}${voffset 9}${freq_g 5} ${cpubar cpu5}${offset 10}${cpubar cpu6} ${freq_g 6}${goto \1}${voffset 9}${freq_g 7} ${cpubar cpu7}${offset 10}${cpubar cpu8} ${freq_g 8}${voffset -27}
+# CPU Temperatures
+template3 ${goto \1}${platform coretemp.0 temp 2}°C${goto \1}${voffset 9}${platform coretemp.0 temp 3}°C${goto \1}${voffset 9}${platform coretemp.0 temp 4}°C${goto \1}${voffset 9}${platform coretemp.0 temp 5}°C${voffset -27}
+# RAM usage
+template4 ${goto \1}Used: ${mem}${goto \1}${voffset 9}Cach: ${cached}${goto \1}${voffset 9}Buff: ${buffers}${goto \1}${voffset 9}${membar 5,76}${voffset -27}
+# Network
+template5 ${goto \1}${offset 20}${upspeed}${goto \1}${offset 72}/${offset 20}${downspeed}${goto \1}${voffset 9}${offset 20}${totalup}${goto \1}${offset 72}/${offset 20}${totaldown}${goto \1}${voffset 9}${upspeedgraph eth0 16,75 FFFFFF 1793D1 100 -t -l}${downspeedgraph eth0 16,75 CCFFCC 66FF66 700 -t -l}${voffset -18}
+# Storage
+template6 ${goto \1}\2${goto \1}${offset 73}${fs_used \2}/${fs_size \2}${goto \1}${voffset 9}${fs_bar 5,150 \2}${goto \1}${voffset 9}\3${goto \1}${offset 73}${fs_used \3}/${fs_size \3}${goto \1}${voffset 9}${fs_bar 5,150 \3}${voffset -27}
+# Processes
+template7 ${goto \1}${top name 1}${goto \1}${offset 100}${top pid 1}${goto \1}${offset 150}${top cpu 1} /${top mem 1}${goto \1}${voffset 9}${top name 2}${goto \1}${offset 100}${top pid 2}${goto \1}${offset 150}${top cpu 2} /${top mem 2}${goto \1}${voffset 9}${top name 3}${goto \1}${offset 100}${top pid 3}${goto \1}${offset 150}${top cpu 3} /${top mem 3}${goto \1}${voffset 9}${top name 4}${goto \1}${offset 100}${top pid 4}${goto \1}${offset 150}${top cpu 4} /${top mem 4}${voffset -27}
+# Poky icon
+template9 ${goto \1}${voffset \2}${font Poky:size=20}\3${font}${voffset -\2}${voffset -20}
+
+TEXT
+${voffset 3}${template9 25 2 P}${template2 70}${template3 270}${template9 400 3 M}${template4 450}${template9 625 5 w}${template5 675}${template9 910 3 H}${template6 960 / /home}
+${voffset -27}${template9 1200 3 a}${template7 1250}${image .conkylogo.png -p 1580,5}${voffset -2}${template9 1700 2 S}${template1 1750}
